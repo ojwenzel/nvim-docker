@@ -26,6 +26,4 @@ RUN git clone https://github.com/neovim/neovim.git
 WORKDIR /tmp/neovim
 RUN git checkout stable && \
     rm -r build/ || true && \
-    make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim" && \
-    make CMAKE_BUILD_TYPE=Release install && \
-    export PATH="$HOME/neovim/bin:$PATH"
+    make CMAKE_BUILD_TYPE=Release install
