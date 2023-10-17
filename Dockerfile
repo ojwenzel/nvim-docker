@@ -14,6 +14,8 @@ RUN apt-get update && \
     gnupg \
     libtool \
     libtool-bin \
+    locales \
+    locales-all \
     make \
     ninja-build \
     pkg-config \
@@ -21,6 +23,12 @@ RUN apt-get update && \
     python3-pip \
     python3-venv \
     unzip
+
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+ENV LC_ALL en_US.UTF-8 
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en
 
 # also install nodejs
 RUN mkdir -p /etc/apt/keyrings && \
