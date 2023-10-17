@@ -19,6 +19,7 @@ RUN apt-get update && \
     pkg-config \
     python3 \
     python3-pip \
+    python3-venv \
     unzip
 
 # also install nodejs
@@ -34,9 +35,14 @@ RUN mkdir -p /etc/apt/keyrings && \
 # clean up
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+    
+# Create directory for virtual environments.
+RUN mkdir -p /root/envs
 
 # Cooperate Neovim with Python 3.
-RUN pip3 install isort pynvim
+# Prepare main virtual environment (for language server features).
+RUN cd /root/envs && python3 -m venv nvim_env
+RUN /root/envs/nvim_env/bin/pip install isort pynvim
 
 # Cooperate NodeJS with Neovim.
 RUN npm i -g neovim

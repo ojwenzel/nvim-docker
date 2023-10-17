@@ -1,5 +1,5 @@
 " nvim python
-" let g:python3_host_prog = '/Users/ojwenzel/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = '/root/envs/nvim_env/bin/python'
 " let g:python_host_prog = '/Users/ojwenzel/.pyenv/versions/neovim2/bin/python'
 
 call plug#begin()
