@@ -35,6 +35,9 @@ RUN mkdir -p /etc/apt/keyrings && \
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Cooperate Neovim with Python 3.
+RUN pip3 install isort pynvim
+
 # Cooperate NodeJS with Neovim.
 RUN npm i -g neovim
 
@@ -57,3 +60,9 @@ RUN curl -fLo /root/.local/share/nvim/site/autoload/plug.vim --create-dirs https
 
 # Create directory for Neovim configuration files.
 RUN mkdir -p /root/.config/nvim
+
+# Copy Neovim configuration files.
+COPY ./config/ /root/.config/nvim/
+
+# Install Neovim extensions.
+RUN nvim --headless +PlugInstall +qall
