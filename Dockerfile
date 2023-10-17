@@ -52,3 +52,8 @@ RUN git checkout stable && \
 WORKDIR /tmp
 RUN rm -rf nvim
 
+# Install Vim Plug.
+RUN curl -fLo /root/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Create directory for Neovim configuration files.
+RUN mkdir -p /root/.config/nvim
