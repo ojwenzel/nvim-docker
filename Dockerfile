@@ -81,6 +81,9 @@ COPY ./config/ /root/.config/nvim/
 # Install Neovim extensions.
 RUN nvim --headless +PlugInstall +qall
 
+# Create directory for venv
+RUN mkdir -p /root/envs/project
+
 # Create directory for projects (there should be mounted from host).
 RUN mkdir -p /root/workspace
 
