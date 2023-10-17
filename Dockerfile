@@ -40,8 +40,15 @@ RUN npm i -g neovim
 
 WORKDIR /tmp
 
+# Clone nvim
 RUN git clone https://github.com/neovim/neovim.git
 WORKDIR /tmp/neovim
+# Build nvim
 RUN git checkout stable && \
     rm -r build/ || true && \
     make CMAKE_BUILD_TYPE=Release install
+
+# Remove repo from Image
+WORKDIR /tmp
+RUN rm -rf nvim
+
