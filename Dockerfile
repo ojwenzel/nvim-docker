@@ -35,6 +35,9 @@ RUN mkdir -p /etc/apt/keyrings && \
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Cooperate NodeJS with Neovim.
+RUN npm i -g neovim
+
 WORKDIR /tmp
 
 RUN git clone https://github.com/neovim/neovim.git
