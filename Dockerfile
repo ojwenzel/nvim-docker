@@ -66,3 +66,13 @@ COPY ./config/ /root/.config/nvim/
 
 # Install Neovim extensions.
 RUN nvim --headless +PlugInstall +qall
+
+# Create directory for projects (there should be mounted from host).
+RUN mkdir -p /root/workspace
+
+# Set default location after container startup.
+WORKDIR /root/workspace
+
+# Avoid container exit.
+# CMD ["tail", "-f", "/dev/null"]
+
