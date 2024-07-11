@@ -5,6 +5,9 @@ services:
       context: .
       ssh:
         - default
+    environment:
+      - USER_ID
+      - GROUP_ID
     volumes:
       - nvim-cache:/root/.cache
       - nvim-local:/root/.local
