@@ -16,9 +16,6 @@ RUN apk add \
     alpine-sdk \
     --update
 
-# Replace with your own configuration repository to load a user configuration
-COPY ./astronvim_config /root/.config/nvim
-
 # prepare workspace directory
 RUN mkdir /workspace
 WORKDIR /workspace
