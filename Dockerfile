@@ -19,4 +19,9 @@ RUN apk add \
 # Replace with your own configuration repository to load a user configuration
 COPY ./astronvim_config ~/.config/nvim
 
+# prepare workspace directory
+RUN mkdir /workspace
+WORKDIR /workspace
+
+# set nvim as command for container startup
 CMD nvim
