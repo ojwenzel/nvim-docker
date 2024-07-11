@@ -17,6 +17,6 @@ RUN apk add \
     --update
 
 # Replace with your own configuration repository to load a user configuration
-RUN git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
+COPY ./astronvim_config ~/.config/nvim
 
 CMD nvim
