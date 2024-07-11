@@ -1,20 +1,20 @@
 FROM alpine:latest
 
 RUN apk add \
+    alpine-sdk \
     bash \
+    bottom \
     curl \
     git \
+    go \
+    lazygit \
     lua \
+    neovim \
     nodejs \
     npm \
-    lazygit \
-    bottom \
     openssh \
     python3 \
-    go \
-    neovim \
     ripgrep \
-    alpine-sdk \
     --update
 
 # download public key for github.com
