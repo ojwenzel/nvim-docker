@@ -2,6 +2,7 @@
 
 USER_ID=${USER_ID:-0}
 GROUP_ID=${USER_GROUPS:-0}
+CWD=${CWD:-$(pwd)}
 
 # Create user account
 if [ $USER_ID != 0 ]; then
@@ -65,14 +66,14 @@ if [ $USER_ID != 0 ]; then
    echo "$USER_ID       ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
    #chown -f -R $USER_ID:$USER_ID /root || true
 
-  if [ -n $CWD ]; then cd $CWD; fi
-  echo "Running as user $USER"
-
   cd $USER_HOME
 
   # setup nvim for new user
   cp -f -r /root/.config $USER_HOME/.config
   chown -f -R $USER_ID:$USER_ID $USER_HOME/.config
+
+  if [ -n $CWD ]; then cd $CWD; fi
+  echo "Running as user $USER."
 
   if [[ $@ == "" ]]
   then
@@ -83,7 +84,7 @@ if [ $USER_ID != 0 ]; then
 
 else
   if [ -n $CWD ]; then cd $CWD; fi
-  echo "Running as default container user"
+  echo "Running as default container user."
 
   if [[ $@ == "" ]]
   then

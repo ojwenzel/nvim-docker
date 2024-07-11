@@ -41,4 +41,4 @@ RUN mkdir /workspace
 WORKDIR /workspace
 
 # set nvim as command for container startup
-CMD ["nvim", "/workspace"]
+CMD nvim
