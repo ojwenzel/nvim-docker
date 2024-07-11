@@ -11,6 +11,7 @@ services:
     volumes:
       - nvim-cache:/root/.cache
       - nvim-local:/root/.local
+      - ./:/workspace
 
 volumes:
   nvim-cache:
