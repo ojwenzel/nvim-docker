@@ -27,3 +27,10 @@ WORKDIR /tmp/neovim
 RUN git checkout stable && \
     rm -r build/ || true && \
     make CMAKE_BUILD_TYPE=Release install
+
+RUN git clone --depth 1 https://github.com/ojwenzel/atronvim_config.git ~/.config/nvim
+
+RUN mkdir /workspace
+WORKDIR /workspace
+
+ENTRYPOINT ["bash", "-l", "-c", "nvim"]
