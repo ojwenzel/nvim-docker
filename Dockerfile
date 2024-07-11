@@ -1,7 +1,5 @@
 FROM alpine:latest
 
-SHELL ["sh", "-uelic"]
-
 RUN apk add \
     bash \
     curl \
