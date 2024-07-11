@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+SHELL ["sh", "-uelic"]
+
 RUN apk add \
     bash \
     curl \
@@ -17,7 +19,7 @@ RUN apk add \
     --update
 
 # Replace with your own configuration repository to load a user configuration
-COPY ./astronvim_config ~/.config/nvim
+COPY ./astronvim_config /root/.config/nvim
 
 # prepare workspace directory
 RUN mkdir /workspace
