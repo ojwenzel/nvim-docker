@@ -69,7 +69,11 @@ if [ $USER_ID != 0 ]; then
   cd $USER_HOME
 
   # setup nvim for new user
-  cp -f -r /root/.config $USER_HOME/.config
+  if [ -d "/root/.config" ]; then
+     cp -f -r /root/.config $USER_HOME/.config
+  else
+     mkdir $USER_HOME/.config
+  fi
   chown -f -R $USER_ID:$USER_ID $USER_HOME/.config
 
   if [ -n $CWD ]; then cd $CWD; fi
